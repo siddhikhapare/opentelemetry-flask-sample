@@ -8,30 +8,20 @@ from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 import time
 import random
 
-#https://open-telemetry.github.io/opentelemetry-python/getting-started.html
 
-# Service name is required for most backends
 resource = Resource(attributes={
     SERVICE_NAME: "usersapi-services"
 })
 
-#meter = _metrics.get_meter("app_or_package_name")
-#meter = get_meter_provider().get_meter("view-drop-aggregation", "0.1.2")
-
-
 # Start Prometheus client
 #start_http_server(port=8000, addr="localhost")
 
-# Initialize PrometheusMetricReader which pulls metrics from the SDK
-# on-demand to respond to scrape requests
+
 reader = PrometheusMetricReader()
 provider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(provider)
 
-#To get a meter, you need to provide the package name from which you are calling
-#  the meter APIs to OpenTelemetry by calling MeterProvider.get_meter with the calling 
-# instrumentation name and the version of your package.
-#https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html
+
 if __name__ == "__main__":
     meter = metrics.get_meter(
         name="usersapi", 
@@ -67,8 +57,7 @@ if __name__ == "__main__":
     # provide the first data point
     requests_active.add(-2, labels)
 
-    #https://lightstep.com/opentelemetry/attributes-and-labels
-    #https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/api.md#histogram-creation
+    
     histogram = meter.create_histogram(
         name="http.server.duration",
         unit="ms",
