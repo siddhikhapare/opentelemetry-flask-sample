@@ -7,7 +7,7 @@ class user_model():
         try:
            self.connection = pymysql.connect(host='localhost',
                             user='root',
-                            password='redhat12',
+                            password='password',
                             database='usersapi')
                             #cursorclass=pymysql.cursors.DictCursor)	
             self.cursor = self.connection.cursor(pymysql.cursors.DictCursor)
