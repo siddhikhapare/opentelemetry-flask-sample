@@ -11,10 +11,6 @@ def getusers():
 def createusers():
     return obj.createUser_model(request.form)
 
-@app.route('/user/<id>')
-def getuserdetails(id):
-    return obj.userdetails_model(id)
-
 @app.route('/delete/<id>',methods=['DELETE'])
 def deleteusers(id):
     return obj.deleteUsers_model(id)
