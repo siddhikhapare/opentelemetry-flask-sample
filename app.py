@@ -12,9 +12,7 @@ try:
 except Exception as e:
     print(e)
 
-#Flask-Cors-
-#https://bobbyhadz.com/blog/python-no-module-named-flask-cors
-#https://www.techonthenet.com/sql/primary_keys.php
+
 
 
 
